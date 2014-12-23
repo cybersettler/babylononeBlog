@@ -25,12 +25,14 @@ var BlogApp = function() {
         //  Set the environment variables we need.
         self.ipaddress = process.env.OPENSHIFT_NODEJS_IP;
         self.port      = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+        self.baseUrl = "http://babylonone-cybersettler.rhcloud.com/";
 
         if (typeof self.ipaddress === "undefined") {
             //  Log errors on OpenShift but continue w/ 127.0.0.1 - this
             //  allows us to run/test the app locally.
             console.warn('No OPENSHIFT_NODEJS_IP var, using 127.0.0.1');
             self.ipaddress = "127.0.0.1";
+            self.baseUrl = 'http://'+ self.ipaddress + ':' +self.port + '/';
         };
     };
 
@@ -94,7 +96,6 @@ var BlogApp = function() {
      *  Create the routing table entries + handlers for the application.
      */
     self.createRoutes = function() {
-        var baseUrl = 'http://'+ self.ipaddress + ':' +self.port + '/';
         self.routes = { };
 
         self.routes['/asciimo'] = function(req, res) {
@@ -106,7 +107,7 @@ var BlogApp = function() {
           //  res.setHeader('Content-Type', 'text/html');
           //  res.send(self.cache_get('index.html') );
           var sections = Sections.getAll();
-          res.render( 'index', { baseUrl:baseUrl, sections:sections, posts:Posts.getPosts(), activeSection:"home" } );
+          res.render( 'index', { baseUrl:self.baseUrl, sections:sections, posts:Posts.getPosts(), activeSection:"home" } );
         };
 
         self.routes['/section/*'] = function(req, res) {
@@ -114,7 +115,7 @@ var BlogApp = function() {
           var id = /\/section\/(\w+)\.html/.exec(url)[1];
           var section = Sections.getById(id);
           section.content = fs.readFileSync('./data/sections/' + id +'.html');
-          res.render( 'section', { sectionId:id, baseUrl:baseUrl, section:section, sections:Sections.getAll() } );
+          res.render( 'section', { sectionId:id, baseUrl:self.baseUrl, section:section, sections:Sections.getAll() } );
         };
 
         self.routes['/post/*'] = function(req, res) {
@@ -122,7 +123,7 @@ var BlogApp = function() {
           var id = /\/post\/(\w+)\.html/.exec(url)[1];
           var post = Posts.getPostById(id);
           post.content = fs.readFileSync('./data/posts/' + id +'.html');
-          res.render( 'post', { postId:id, baseUrl:baseUrl, post:post, sections:Sections.getAll() } );
+          res.render( 'post', { postId:id, baseUrl:self.baseUrl, post:post, sections:Sections.getAll() } );
         };
     };
 
