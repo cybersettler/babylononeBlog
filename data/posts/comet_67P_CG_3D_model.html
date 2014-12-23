@@ -1,0 +1,70 @@
+<div id="container"></div>
+
+<p class="lead">
+  ESA has made public a 3D model of comet 67P/Churyumov-Gerasimenko in
+  .wrl and .obj formats. This model is based on images taken by the OSIRIS and
+  NAVCAM cameras onboard Rosetta. A rendering with <a href="http://threejs.org">Threejs</a>
+  is shown above, which is the result of importing the .obj file to Threejs format.
+  Orbit controls are enabled, so it is posible to change the perspective with left mouse
+  button and mouse wheel. The links to the 3D model files form ESA can be found following
+  the link below. Enjoy!
+</p>
+
+<p><a href="http://blogs.esa.int/rosetta/2014/10/03/measuring-comet-67pc-g/">MEASURING COMET 67P/C-G</a></p>
+
+<script src="../resources/js/three.min69.js"></script>
+<script src="../resources/js/OrbitControls.js"></script>
+<style>
+canvas{
+  width:500px;
+  height:300px;
+}
+</style>
+<script>
+
+var camera, controls, scene, renderer, container;
+
+init();
+
+function init(){
+
+  scene = new THREE.Scene();
+  camera = new THREE.PerspectiveCamera( 75, 500/300, 0.1, 1000 );
+  renderer = new THREE.WebGLRenderer();
+  renderer.setSize( 500, 300 );
+
+  container = document.getElementById( 'container' );
+  container.appendChild( renderer.domElement );
+
+  var light = new THREE.PointLight( 0xffffff, 1, 100 );
+  light.position.set( 10, 10, 10 );
+  scene.add( light );
+
+  camera.position.z = 4;
+  var v = new THREE.Vector3( 0, 0, 0 );
+  camera.lookAt(v);
+
+  controls = new THREE.OrbitControls( camera );
+  controls.damping = 0.2;
+  controls.addEventListener( 'change', render );
+
+
+  var loader = new THREE.ObjectLoader();
+  loader.load("../resources/js/comet_67p_c-g.json",function(object){
+    scene.add(object);
+    render();
+    animate();
+  });
+}
+
+function animate() {
+  requestAnimationFrame( animate );
+  controls.update();
+};
+
+function render(){
+  renderer.render(scene, camera);
+}
+
+
+</script>

@@ -1,0 +1,12 @@
+extends ./layout.jade
+
+block title
+  title= section.title
+  
+block content
+  .container-fluid
+    .post-header-image(style="background-image:url('" + baseUrl + "resources/images/" + section.headerImageUri + "')")
+    .page-header
+      h1= section.title
+    | !{ section.content }
+    include footer.jade

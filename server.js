@@ -1,13 +1,14 @@
 #!/bin/env node
 //  OpenShift sample Node application
-var express = require('express');
-var fs      = require('fs');
-
+var express   = require('express');
+var fs        = require('fs');
+var Sections  = require('./data/Sections.js');
+var Posts     = require('./data/Posts.js');
 
 /**
  *  Define the sample application.
  */
-var SampleApp = function() {
+var BlogApp = function() {
 
     //  Scope.
     var self = this;
@@ -93,6 +94,7 @@ var SampleApp = function() {
      *  Create the routing table entries + handlers for the application.
      */
     self.createRoutes = function() {
+        var baseUrl = 'http://'+ self.ipaddress + ':' +self.port + '/';
         self.routes = { };
 
         self.routes['/asciimo'] = function(req, res) {
@@ -101,8 +103,26 @@ var SampleApp = function() {
         };
 
         self.routes['/'] = function(req, res) {
-            res.setHeader('Content-Type', 'text/html');
-            res.send(self.cache_get('index.html') );
+          //  res.setHeader('Content-Type', 'text/html');
+          //  res.send(self.cache_get('index.html') );
+          var sections = Sections.getAll();
+          res.render( 'index', { baseUrl:baseUrl, sections:sections, posts:Posts.getPosts(), activeSection:"home" } );
+        };
+
+        self.routes['/section/*'] = function(req, res) {
+          var url = req.url;
+          var id = /\/section\/(\w+)\.html/.exec(url)[1];
+          var section = Sections.getById(id);
+          section.content = fs.readFileSync('./data/sections/' + id +'.html');
+          res.render( 'section', { sectionId:id, baseUrl:baseUrl, section:section, sections:Sections.getAll() } );
+        };
+
+        self.routes['/post/*'] = function(req, res) {
+          var url = req.url;
+          var id = /\/post\/(\w+)\.html/.exec(url)[1];
+          var post = Posts.getPostById(id);
+          post.content = fs.readFileSync('./data/posts/' + id +'.html');
+          res.render( 'post', { postId:id, baseUrl:baseUrl, post:post, sections:Sections.getAll() } );
         };
     };
 
@@ -113,12 +133,16 @@ var SampleApp = function() {
      */
     self.initializeServer = function() {
         self.createRoutes();
-        self.app = express.createServer();
+        self.app = express();
+        self.app.set('views', './views')
+        self.app.set('view engine', 'jade')
 
         //  Add handlers for the app (from the routes).
         for (var r in self.routes) {
             self.app.get(r, self.routes[r]);
         }
+
+        self.app.use("/resources",express.static(__dirname + '/resources'));
     };
 
 
@@ -153,7 +177,6 @@ var SampleApp = function() {
 /**
  *  main():  Main code.
  */
-var zapp = new SampleApp();
+var zapp = new BlogApp();
 zapp.initialize();
 zapp.start();
-

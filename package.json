@@ -1,35 +1,37 @@
 {
-  "name": "OpenShift-Sample-App",
-  "version": "1.0.0",
-  "description": "OpenShift Sample Application",
+  "name": "Babylonone-app",
+  "version": "0.0.1",
+  "description": "Website for the Babylon One Project",
   "keywords": [
-    "OpenShift",
+    "space",
+    "videogame",
     "Node.js",
     "application",
     "openshift"
   ],
   "author": {
-    "name": "OpenShift",
-    "email": "ramr@example.org",
-    "url": "http://www.openshift.com/"
+    "name": "Cybersettler",
+    "email": "cybersettler@babylonone.com",
+    "url": "http://www.babylonone.com/"
   },
-  "homepage": "http://www.openshift.com/",
+  "homepage": "http://www.babylonone.com/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/openshift/origin-server"
+    "url": ""
   },
-
   "engines": {
     "node": ">= 0.6.0",
     "npm": ">= 1.0.0"
   },
-
   "dependencies": {
-    "express": "~3.4.4"
+    "express": "~3.4.4",
+    "jade": "^1.8.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-handlebars": "^0.9.1"
+  },
   "bundleDependencies": [],
-
   "private": true,
   "main": "server.js"
 }

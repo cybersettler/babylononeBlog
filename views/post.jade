@@ -1,0 +1,14 @@
+extends ./layout.jade
+
+block title
+  title= post.title
+  
+block content
+  .container-fluid
+    .post-header-image(style="background-image:url('" + baseUrl + "resources/images/" + post.headerImageUri + "')")
+    .page-header
+      h1= post.title
+        br
+        small=  post.author + ' | ' + post.publishDate
+    | !{ post.content }
+    include footer.jade
