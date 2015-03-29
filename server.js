@@ -109,7 +109,7 @@ var BlogApp = function() {
           //  res.setHeader('Content-Type', 'text/html');
           //  res.send(self.cache_get('index.html') );
           var sections = Sections.getAll();
-          res.render( 'index', { baseUrl:self.baseUrl, environment:self.evironment, sections:sections, posts:Posts.getPosts(), activeSection:"home" } );
+          res.render( 'index', { baseUrl:self.baseUrl, environment:self.environment, sections:sections, posts:Posts.getPosts(), activeSection:"home" } );
         };
 
         self.routes['/section/*'] = function(req, res) {
@@ -117,7 +117,7 @@ var BlogApp = function() {
           var id = /\/section\/(\w+)\.html/.exec(url)[1];
           var section = Sections.getById(id);
           section.content = fs.readFileSync('./data/sections/' + id +'.html');
-          res.render( 'section', { sectionId:id, baseUrl:self.baseUrl, environment:self.evironment, section:section, sections:Sections.getAll() } );
+          res.render( 'section', { sectionId:id, baseUrl:self.baseUrl, environment:self.environment, section:section, sections:Sections.getAll() } );
         };
 
         self.routes['/post/*'] = function(req, res) {
@@ -125,7 +125,7 @@ var BlogApp = function() {
           var id = /\/post\/(\w+)\.html/.exec(url)[1];
           var post = Posts.getPostById(id);
           post.content = fs.readFileSync('./data/posts/' + id +'.html');
-          res.render( 'post', { postId:id, baseUrl:self.baseUrl, environment:self.evironment, post:post, sections:Sections.getAll() } );
+          res.render( 'post', { postId:id, baseUrl:self.baseUrl, environment:self.environment, post:post, sections:Sections.getAll() } );
         };
     };
 
