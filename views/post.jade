@@ -11,4 +11,5 @@ block content
         br
         small=  post.author + ' | ' + post.publishDate
     | !{ post.content }
-    include footer.jade
+    if environment == 'PROD'
+      script(src=baseUrl+'resources/js/disqus.js')
