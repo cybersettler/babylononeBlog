@@ -11,5 +11,6 @@ block content
         br
         small=  post.author + ' | ' + post.publishDate
     | !{ post.content }
+    #disqus_thread
     if environment == 'PROD'
       script(src=baseUrl+'resources/js/disqus.js')
