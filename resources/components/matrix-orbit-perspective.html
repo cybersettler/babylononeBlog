@@ -1,0 +1,140 @@
+<template>
+  <style>
+    #wrapper{
+      position:relative;
+    }
+    :host{
+      display:block;
+    }
+  </style>
+  <div id="wrapper"></div>
+</template>
+
+<script>
+    (function(window, document, THREE, undefined) {
+
+      var renderer,scene,camera;
+
+      function render(){
+        renderer.render( scene, camera );
+      }
+
+      function animate() {
+
+        requestAnimationFrame(animate);
+        controls.update();
+
+      }
+
+      function init(width,height,container){
+
+        scene = new THREE.Scene();
+        scene.fog = new THREE.FogExp2( 0xcccccc, 0.002 );
+        camera = new THREE.PerspectiveCamera( 75, width/height, 0.1, 1000 );
+
+        // var light = new THREE.PointLight( 0xffffff, 1, 100 );
+        // light.position.set( 10, 10, 10 );
+        // scene.add( light );
+
+        light = new THREE.DirectionalLight( 0xffffff );
+        light.position.set( 10, 10, 10 );
+        scene.add( light );
+
+        camera.position.z = 4;
+        var v = new THREE.Vector3( 0, 0, 0 );
+        camera.lookAt(v);
+
+        renderer = new THREE.WebGLRenderer( { antialias: false } );
+
+        controls = new THREE.OrbitControls( camera, renderer.domElement );
+        controls.damping = 0.2;
+        controls.addEventListener( 'change', render );
+
+        // renderer
+
+
+        renderer.setClearColor( scene.fog.color );
+        renderer.setPixelRatio( window.devicePixelRatio );
+        renderer.setSize( width, height );
+
+        container.appendChild( renderer.domElement );
+
+        animate();
+      }
+
+        // Refers to the "importer", which is index.html
+        var thatDoc = document;
+        // Refers to the "importee", which is src/hello-world.html
+        var thisDoc =  (thatDoc._currentScript || thatDoc.currentScript).ownerDocument;
+        // Gets content from <template>
+        var template = thisDoc.querySelector('template').content;
+        // Creates an object based in the HTML Element prototype
+        var elementProto = Object.create(HTMLElement.prototype);
+
+      // Fires when an instance of the element is created
+      elementProto.createdCallback = function() {
+        console.log("Perspective created start");
+
+        // Creates the shadow root
+        var shadowRoot = this.createShadowRoot();
+        // Adds a template clone into shadow root
+        var clone = thatDoc.importNode(template, true);
+        shadowRoot.appendChild(clone);
+
+        var wrapperElement = shadowRoot.querySelector("#wrapper");
+
+        var width = window.innerWidth;
+        var height = window.innerHeight;
+
+        // Checks if the "who" attribute has been overwritten
+        if (this.hasAttribute('width') && this.hasAttribute('height')) {
+          var width = this.getAttribute('width');
+          var height = this.getAttribute('height');
+
+          wrapperElement.style.width = width + "px";
+          wrapperElement.style.height = height + "px";
+
+          init(width,height,wrapperElement);
+          render();
+
+          var objectURL = this.getAttribute('objectURL');
+
+          if(objectURL){
+            var loader = new THREE.ObjectLoader();
+            loader.load(objectURL,function(object3D){
+              scene.add(object3D);
+              render();
+            },function(){
+              console.log("loading object from " + objectURL);
+            },function(){
+              console.log("An error ocurred ");
+            });
+          }
+        }
+
+        //    this.threeRenderer = new MATRIX.Renderer(scene,camera,updatePerspective,sceneElement,width,height);
+        console.log("Perspective created end");
+      };
+
+      // Fires when an instance was inserted into the document
+      elementProto.attachedCallback = function() {
+        console.log("Perspective inserted start");
+
+        //  this.threeRenderer.render();
+        console.log("Perspective inserted end");
+      };
+
+      // Fires when an attribute was added, removed, or updated
+      elementProto.attributeChangedCallback = function(attr, oldVal, newVal) {
+        console.log("Attribute "+attr+" changed in Perspective element.");
+        console.log("Oldvalue: "+ oldVal);
+        console.log("New Value: "+ newVal);
+      };
+
+
+      // Registers <hello-world> in the main document
+      window.perspective = thatDoc.registerElement('matrix-orbit-perspective', {
+        prototype: elementProto
+      });
+    })(window, document,THREE);
+</script>

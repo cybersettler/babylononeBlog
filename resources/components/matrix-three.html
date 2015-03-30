@@ -1,0 +1,90 @@
+<template>
+  <div id="scene"></div>
+</template>
+<script>
+(function(window, document, THREE, undefined) {
+    // Refers to the "importer", which is index.html
+    var thatDoc = document;
+    // Refers to the "importee", which is src/hello-world.html
+    var thisDoc =  (thatDoc._currentScript || thatDoc.currentScript).ownerDocument;
+    // Gets content from <template>
+    var template = thisDoc.querySelector('template').content;
+
+    var element = Object.create(HTMLElement.prototype);
+    element.width = window.innerWidth;
+    element.height = window.innerHeight;
+
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+
+    var sceneEl;
+    var requestId;
+
+    element.render = function() {
+      requestId = requestAnimationFrame( element.render );
+      thisDoc.updatePerspective();
+      renderer.render( thisDoc.scene, thisDoc.camera );
+    }
+
+
+    // Fires when an instance of the element is created
+    element.createdCallback = function() {
+      console.log("Three element created");
+
+      // Creates the shadow root
+      var shadowRoot = this.createShadowRoot();
+      // Adds a template clone into shadow root
+      var clone = thatDoc.importNode(template, true);
+      shadowRoot.appendChild(clone);
+
+      sceneEl = shadowRoot.querySelector("#scene");
+
+      if (this.hasAttribute('width')) {
+          this.width = this.getAttribute('width');
+      }
+
+      if (this.hasAttribute('height')) {
+          this.width = this.getAttribute('height');
+      }
+
+    //  scene = this.getAttribute('scene');
+    //  camera = this.getAttribute('camera');
+    //  callback = this.getAttribute('callback');
+    };
+
+    // Fires when an instance was inserted into the document
+    element.attachedCallback = function() {
+      console.log("Three element attached");
+      sceneEl.appendChild( renderer.domElement );
+    //  this.render();
+    };
+
+    // Fires when an instance was removed from the document
+    element.detachedCallback = function() {
+      cancelAnimationFrame( requestId );
+    };
+
+    // Fires when an attribute was added, removed, or updated
+    element.attributeChangedCallback = function(attr, oldVal, newVal) {
+      console.log( "Attribute " + attr + " changed in Three element." );
+      console.log( "Oldvalue: " + oldVal );
+      console.log( "New Value: " + newVal );
+
+      this[attr] = newVal;
+      if(attr == "width" || attr == "height"){
+      //  element.render();
+        this[attr] = newVal;
+        renderer.setSize( this.width, this.height );
+      }
+
+    };
+
+    element.stopAnimation = function(){
+      cancelAnimationFrame( requestId );
+    }
+
+    document.registerElement('matrix-three', {
+        prototype: element
+    });
+}(window,document,THREE));
+</script>

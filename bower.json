@@ -1,0 +1,26 @@
+{
+  "name": "babylononeBlog",
+  "version": "0.0.0",
+  "authors": [
+    "cybersettler <cybersettler@babylonone.com>"
+  ],
+  "description": "Blog of the Babylonone project",
+  "main": "main.js",
+  "keywords": [
+    "space"
+  ],
+  "license": "Apache 2.0",
+  "homepage": "babylonone.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "threejs": "*",
+    "webcomponentsjs": "~0.6.0"
+  }
+}

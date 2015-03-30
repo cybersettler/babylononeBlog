@@ -7,11 +7,13 @@ html(lang='en')
       title BabylonOne
     link(href=baseUrl+'resources/css/bootstrap.min.css', rel='stylesheet', media='screen')
     link(href=baseUrl+'resources/css/style.css', rel='stylesheet', media='screen')    
-    script(src=baseUrl+'resources/libs/jquery-2.1.1.min.js')      
+    script(src=baseUrl+'resources/lib/jquery-2.1.1.min.js')
     script(src=baseUrl+'resources/js/bootstrap.min.js')
+    script(src=baseUrl+'resources/lib/webcomponents.min.js')
+    script(src=baseUrl+'resources/lib//three.min.js')
+    script(src=baseUrl+'resources/lib/OrbitControls.js')
+    link(rel="import" href='http://localhost:8080/resources/components/matrix-orbit-perspective.html')
   body
-    //
-      #{ environment }
     if environment == 'PROD'
       script(src=baseUrl+'resources/js/analytics.js')
     nav.navbar.navbar-default.b1-main-navbar(role='navigation')
