@@ -1,0 +1,26 @@
+extends ./layout.jade
+
+block title
+  title= section.title
+  
+block content
+  .container-fluid
+    .post-header-image(style="background-image:url('" + baseUrl + "resources/images/" + section.headerImageUri + "')")
+    .page-header
+      h1= section.title
+    .row
+      .col-xs-12.col-sm-8
+        ul.media-list
+          each post in section.content
+            li.media
+              a.media-left(href='post/' + post.id + '.html')
+                img(src='resources/images/' + post.featureImageUri, alt=post.featureImageAltText )
+              .media-body
+                h4.media-heading= post.title + ' '
+                  small= post.publishDate
+                p= post.description + ' '
+                  | (
+                  a(href='post/' + id + '.html')= ' Learn more '
+                  | )
+      .col-sm-4
+    include footer.jade

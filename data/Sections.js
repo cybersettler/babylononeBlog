@@ -5,14 +5,16 @@ var sections = {
     headerImageUri:"default_header_image.png"
   },
   about:{
-    title:"About",
-    path:"/section/about.html",
-    headerImageUri:"default_header_image.png"
+    title: "About",
+    path: "/section/about.html",
+    headerImageUri: "default_header_image.png",
+    type: "page"
   },
   blog:{
     title:"Blog",
     path:"/section/blog.html",
-    headerImageUri:"default_header_image.png"
+    headerImageUri:"default_header_image.png",
+    type: "postList"
   },
   vr:{
     title:"VR",

@@ -116,8 +116,14 @@ var BlogApp = function() {
           var url = req.url;
           var id = /\/section\/(\w+)\.html/.exec(url)[1];
           var section = Sections.getById(id);
-          section.content = fs.readFileSync('./data/sections/' + id +'.html');
-          res.render( 'section', { sectionId:id, baseUrl:self.baseUrl, environment:self.environment, section:section, sections:Sections.getAll() } );
+          var template = 'section';
+          if (section.type && section.type === "page") {
+            section.content = fs.readFileSync('./data/sections/' + id +'.html');
+          } else {
+            template = 'postList';
+            section.content = Posts.getPostsBySection(id);
+          }
+          res.render( template, { sectionId:id, baseUrl:self.baseUrl, environment:self.environment, section:section, sections:Sections.getAll() } );
         };
 
         self.routes['/post/*'] = function(req, res) {
