@@ -7,18 +7,11 @@ block content
   .container-fluid
     .row
       .col-xs-12.col-sm-8
-        ul.media-list
-          each post, id in posts
-            li.media
-              a.media-left(href='post/' + id + '.html')
-                img(src='resources/images/' + post.featureImageUri, alt=post.featureImageAltText )
-              .media-body
-                h4.media-heading= post.title + ' '
-                  small= post.publishDate
-                p= post.description + ' '
-                  | (
-                  a(href='post/' + id + '.html')= ' Learn more '
-                  | )
+        .jumbotron
+          h1 announcements[0].title + ' '
+            small= announcements[0].publishDate
+          img(src='resources/images/' + announcements[0].featureImageUri, alt=announcements[0].featureImageAltText )
+          | !{ anouncements[0].content }
       .col-sm-4
         a.twitter-timeline(href="https://twitter.com/cybersettler" data-widget-id="388409474286759936") Tweets by @cybersettler
         script(src="resources/js/twitter_timeline.js")

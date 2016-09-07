@@ -4,6 +4,7 @@ var express   = require('express');
 var fs        = require('fs');
 var Sections  = require('./data/Sections.js');
 var Posts     = require('./data/Posts.js');
+var Announcements = require('./data/Announcements.js');
 
 /**
  *  Define the sample application.
@@ -109,7 +110,13 @@ var BlogApp = function() {
           //  res.setHeader('Content-Type', 'text/html');
           //  res.send(self.cache_get('index.html') );
           var sections = Sections.getAll();
-          res.render( 'index', { baseUrl:self.baseUrl, environment:self.environment, sections:sections, posts:Posts.getPosts(), activeSection:"home" } );
+          res.render('index', {
+            baseUrl: self.baseUrl,
+            environment: self.environment,
+            sections: sections,
+            announcements: Announcements.getAnnouncements(),
+            activeSection:"home"
+          });
         };
 
         self.routes['/section/*'] = function(req, res) {
@@ -123,7 +130,14 @@ var BlogApp = function() {
             template = 'postList';
             section.content = Posts.getPostsBySection(id);
           }
-          res.render( template, { sectionId:id, baseUrl:self.baseUrl, environment:self.environment, section:section, sections:Sections.getAll() } );
+          res.render(template, {
+            sectionId:id,
+            baseUrl:self.baseUrl,
+            environment:self.environment,
+            section:section,
+            sections:Sections.getAll(),
+            activeSection: id
+          });
         };
 
         self.routes['/post/*'] = function(req, res) {
