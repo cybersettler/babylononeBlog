@@ -13,14 +13,14 @@ block content
         ul.media-list
           each post in section.content
             li.media
-              a.media-left(href='post/' + post.id + '.html')
-                img(src='resources/images/' + post.featureImageUri, alt=post.featureImageAltText )
+              a.media-left(href='/post/' + post.id + '.html')
+                img(src='/resources/images/' + post.featureImageUri, alt=post.featureImageAltText )
               .media-body
                 h4.media-heading= post.title + ' '
                   small= post.publishDate
                 p= post.description + ' '
                   | (
-                  a(href='post/' + id + '.html')= ' Learn more '
+                  a(href='/post/' + id + '.html')= ' Learn more '
                   | )
       .col-sm-4
     include footer.jade
