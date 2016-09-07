@@ -39,7 +39,7 @@ var posts = {
     author:"cybersettler@babylonone.com",
     publishDate:"10.11.2014",
     featureImageUri:"alpha_centauri_feature_160x100.jpg",
-    fetaureImageAltText:"Artist rendering of Alpha Centauri",
+    featureImageAltText:"Artist rendering of Alpha Centauri",
     headerImageUri:"colosimo-130704-011.jpg",
     section:"blog"
   }

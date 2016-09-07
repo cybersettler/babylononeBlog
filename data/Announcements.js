@@ -1,6 +1,6 @@
 var Announcements = [
   {
-    title: "Upcomming event: Citizens' Debate on Space for Europe",
+    title: "Upcoming event: Citizens' Debate on Space for Europe",
     content: '<p>The event will take place on Sepetember 10 ' +
     'throughout the European Space Agency member countries. ' +
     'European citizens that went through a selection process' +
@@ -11,7 +11,7 @@ var Announcements = [
     '</p>',
     publishDate: "07.09.2016",
     author: "cybersettler@babylonone.com",
-    headerImageUri: "esa-logo.png",
+    featureImageUri: "esa-logo.png",
     featureImageAltText: "ESA logo"
   }
 ];
