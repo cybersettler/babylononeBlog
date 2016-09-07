@@ -58,7 +58,7 @@ function filterPostsBy(key, value) {
 function sortPostsByDate(a, b) {
   var timeA = parseDate(a);
   var timeB = parseDate(b);
-  return timeA - timeB;
+  return timeB - timeA;
 }
 
 function parseDate(dateString) {
