@@ -1,6 +1,6 @@
 var Announcements = [
   {
-    title: "Ongoing event: Citizens' Debate on Space for Europe",
+    title: "Ongoing event: EO Open Science 2016",
     content: '<p>The European Space Agency (ESA) is organizing the ' +
     '2nd consultation meeting of EO Open Science in ESRIN (Frascati, Italy) ' +
     'on 12–14 September 2016 to explore new challenges and opportunities ' +

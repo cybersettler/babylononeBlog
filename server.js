@@ -121,7 +121,6 @@ var BlogApp = function() {
 
         self.routes['/section/*'] = function(req, res) {
           var url = req.url;
-          console.log('Extracting section id from:', id);
           var id = /\/section\/(\w+)\.html/.exec(url)[1];
           var section = Sections.getById(id);
           var template = 'section';
@@ -143,7 +142,6 @@ var BlogApp = function() {
 
         self.routes['/post/*'] = function(req, res) {
           var url = req.url;
-          console.log('Extracting post id from:', id);
           var id = /\/post\/(\w+)\.html/.exec(url)[1];
           var post = Posts.getPostById(id);
           post.content = fs.readFileSync('./data/posts/' + id +'.html');
