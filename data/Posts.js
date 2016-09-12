@@ -5,9 +5,9 @@ var posts = {
     description:"A brief account of the ESA Citizens' Debate on Space in Darmstadt.", // meta description must be limited to 160 characters or less
     author:"cybersettler@babylonone.com",
     publishDate:"12.09.2016",
-    featureImageUri:"citizens_debate_logo_160x125.jpg",
+    featureImageUri:"citizens_debate_logo_160x125.png",
     fetaureImageAltText:"Citizens' Debate Logo",
-    headerImageUri:"garden_in_loire_valley.jpg",
+    headerImageUri:"esa_darmstadt.jpg",
     section:"blog"
   },
   "starship_environment":{
