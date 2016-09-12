@@ -1,6 +1,6 @@
 var posts = {
-  "esacd2016_brief_account": {
-    id: "esacd2016_brief_account",
+  "esacd_brief_account": {
+    id: "esacd_brief_account",
     title:"ESA Citizens' Debate brief account", // the title tag should be 60 characters or less
     description:"A brief account of the ESA Citizens' Debate on Space in Darmstadt.", // meta description must be limited to 160 characters or less
     author:"cybersettler@babylonone.com",
