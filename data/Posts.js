@@ -1,4 +1,15 @@
 var posts = {
+  "esacd2016_brief_account": {
+    id: "esacd2016_brief_account",
+    title:"ESA Citizens' Debate brief account", // the title tag should be 60 characters or less
+    description:"A brief account of the ESA Citizens' Debate on Space in Darmstadt.", // meta description must be limited to 160 characters or less
+    author:"cybersettler@babylonone.com",
+    publishDate:"12.09.2016",
+    featureImageUri:"citizens_debate_logo_160x125.jpg",
+    fetaureImageAltText:"Citizens' Debate Logo",
+    headerImageUri:"garden_in_loire_valley.jpg",
+    section:"blog"
+  },
   "starship_environment":{
     id: "starship_environment",
     title:"Starship environment", // the title tag should be 60 characters or less

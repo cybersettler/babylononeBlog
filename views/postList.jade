@@ -18,7 +18,7 @@ block content
                   small= post.publishDate
                 p= post.description + ' '
                   | (
-                  a(href='/post/' + id + '.html')= ' Learn more '
+                  a(href='/post/' + post.id + '.html')= ' Learn more '
                   | )
       .col-sm-4
     include footer.jade
