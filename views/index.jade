@@ -8,10 +8,15 @@ block content
     .row
       .col-xs-12.col-sm-8
         .jumbotron
-          h1= announcements[0].title + ' '
+          h1(style="font-size:50px")= announcements[0].title + ' '
             small= announcements[0].publishDate
           img(src='resources/images/' + announcements[0].featureImageUri, alt=announcements[0].featureImageAltText )
           | !{ announcements[0].content }
+          p
+            a(target="_blank" href=announcements[0].link, class="btn btn-primary btn-lg active" role="button") Learn more
+        ul.list-group
+        each item in announcements.slice(1)
+          li.list-group-item= item.title
       .col-sm-4
         a.twitter-timeline(href="https://twitter.com/cybersettler" data-widget-id="388409474286759936") Tweets by @cybersettler
         script(src="resources/js/twitter_timeline.js")

@@ -1,15 +1,31 @@
 var Announcements = [
   {
-    title: "A Simple Response to an Elemental Message",
-    content: '<p>Final call for submissions to #ASimpleResponse ' +
-    'interstellar transmission; 16 Sept 23:59 UTC.</p>' +
-    '<p>' +
-    '<a target="_blank" href="http://www.asimpleresponse.org/" class="btn btn-primary btn-lg active" role="button">Learn more</a>' +
-    '</p>',
-    publishDate: "15.09.2016",
+    title: "Upcomming event: ESA Hangout Preparing for Rosetta's grand finale",
+    content: '<p>Join mission experts on 19 September, 1200 GMT / 1400 CEST ' +
+    'to discuss Rosetta’s final days and hours of operation, including ' +
+    'expectations for the images and other scientific data that will be ' +
+    'collected as the spacecraft gets closer and closer to the surface. ' +
+    'We’ll also discuss the exciting discovery of Philae that was made earlier ' +
+    'this month.</p>',
+    link: 'https://plus.google.com/events/cs0j1dpms8se0nkcmqqn4vi96v0',
+    publishDate: "17.09.2016",
     author: "cybersettler@babylonone.com",
-    featureImageUri: "simple_response_logo.png",
+    featureImageUri: "Rossetta_s_last_week_at_the_comet_node_full_image_2.jpg",
     featureImageAltText: "A simple response logo"
+  },{
+    title: "Rosetta’s descent towards region of active pits",
+    content: '<p>The final flyover will be complete on 24 September. ' +
+    'Then a short series of manoeuvres needed to line Rosetta up with the ' +
+    'target impact site will be executed over the following days as it ' +
+    'transfers from flying elliptical orbits around the comet onto a ' +
+    'trajectory that will eventually take it to the comet’s surface on ' +
+    '30 September.</p>',
+    link: 'http://www.esa.int/Our_Activities/Space_Science/Rosetta/' +
+    'Rosetta_s_descent_towards_region_of_active_pits',
+    publishDate: "17.09.2016",
+    author: "cybersettler@babylonone.com",
+    featureImageUri: "Rosetta_logo_rnb_small.jpg",
+    featureImageAltText: "Rosetta logo"
   }
 ];
 
