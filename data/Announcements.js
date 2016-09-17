@@ -1,6 +1,6 @@
 var Announcements = [
   {
-    title: "Upcomming event: ESA Hangout Preparing for Rosetta's grand finale",
+    title: "Upcoming event: ESA Hangout Preparing for Rosetta's grand finale",
     content: '<p>Join mission experts on 19 September, 1200 GMT / 1400 CEST ' +
     'to discuss Rosetta’s final days and hours of operation, including ' +
     'expectations for the images and other scientific data that will be ' +
