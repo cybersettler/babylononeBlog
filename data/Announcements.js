@@ -5,13 +5,12 @@ var Announcements = [
     'to discuss Rosetta’s final days and hours of operation, including ' +
     'expectations for the images and other scientific data that will be ' +
     'collected as the spacecraft gets closer and closer to the surface. ' +
-    'We’ll also discuss the exciting discovery of Philae that was made earlier ' +
-    'this month.</p>',
+    '</p>',
     link: 'https://plus.google.com/events/cs0j1dpms8se0nkcmqqn4vi96v0',
     publishDate: "17.09.2016",
     author: "cybersettler@babylonone.com",
-    featureImageUri: "Rossetta_s_last_week_at_the_comet_node_full_image_2.jpg",
-    featureImageAltText: "A simple response logo"
+    featureImageUri: "Rosetta_s_last_week_at_the_comet_node_full_image_2.jpg",
+    featureImageAltText: "Rossetta's last week at the comet"
   },{
     title: "Rosetta’s descent towards region of active pits",
     content: '<p>The final flyover will be complete on 24 September. ' +

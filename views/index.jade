@@ -16,7 +16,11 @@ block content
             a(target="_blank" href=announcements[0].link, class="btn btn-primary btn-lg active" role="button") Learn more
         ul.list-group
         each item in announcements.slice(1)
-          li.list-group-item= item.title
+          li.list-group-item
+            h2= item.title
+            | !{ item.content }
+            p
+              a(target="_blank" href=item.link) Learn more
       .col-sm-4
         a.twitter-timeline(href="https://twitter.com/cybersettler" data-widget-id="388409474286759936") Tweets by @cybersettler
         script(src="resources/js/twitter_timeline.js")
