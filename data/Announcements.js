@@ -1,16 +1,14 @@
 var Announcements = [
   {
-    title: "Upcoming event: ESA Hangout Preparing for Rosetta's grand finale",
-    content: '<p>Join mission experts on 19 September, 1200 GMT / 1400 CEST ' +
-    'to discuss Rosetta’s final days and hours of operation, including ' +
-    'expectations for the images and other scientific data that will be ' +
-    'collected as the spacecraft gets closer and closer to the surface. ' +
-    '</p>',
-    link: 'https://plus.google.com/events/cs0j1dpms8se0nkcmqqn4vi96v0',
-    publishDate: "17.09.2016",
+    title: "NASA to Announce 'Surprising' Europa Discovery Monday",
+    content: "<p>JNASA will announce new findings about Jupiter's " +
+    'ocean-harboring moon Europa during a news conference at 2 p.m. ' +
+    'EDT (1800 GMT) on Monday (Sept. 26).</p>',
+    link: 'http://www.space.com/34131-jupiter-moon-europa-hubble-telescope-announcement.html',
+    publishDate: "22.09.2016",
     author: "cybersettler@babylonone.com",
-    featureImageUri: "Rosetta_s_last_week_at_the_comet_node_full_image_2.jpg",
-    featureImageAltText: "Rossetta's last week at the comet"
+    featureImageUri: "europa-jupiter-moon-caltech.jpg",
+    featureImageAltText: "jupiters moon Europa"
   },{
     title: "Rosetta’s descent towards region of active pits",
     content: '<p>The final flyover will be complete on 24 September. ' +
