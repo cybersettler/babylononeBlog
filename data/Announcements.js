@@ -7,7 +7,7 @@ var Announcements = [
     link: 'http://www.space.com/34131-jupiter-moon-europa-hubble-telescope-announcement.html',
     publishDate: "22.09.2016",
     author: "cybersettler@babylonone.com",
-    featureImageUri: "europa-jupiter-moon-caltech.jpg",
+    featureImageUri: "europa-moon-caltech.jpg",
     featureImageAltText: "jupiters moon Europa"
   },{
     title: "Rosetta’s descent towards region of active pits",
