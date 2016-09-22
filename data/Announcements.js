@@ -1,7 +1,7 @@
 var Announcements = [
   {
     title: "NASA to Announce 'Surprising' Europa Discovery Monday",
-    content: "<p>JNASA will announce new findings about Jupiter's " +
+    content: "<p>NASA will announce new findings about Jupiter's " +
     'ocean-harboring moon Europa during a news conference at 2 p.m. ' +
     'EDT (1800 GMT) on Monday (Sept. 26).</p>',
     link: 'http://www.space.com/34131-jupiter-moon-europa-hubble-telescope-announcement.html',
