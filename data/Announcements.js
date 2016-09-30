@@ -1,15 +1,5 @@
 var Announcements = [
   {
-    title: "NASA to Announce 'Surprising' Europa Discovery Monday",
-    content: "<p>NASA will announce new findings about Jupiter's " +
-    'ocean-harboring moon Europa during a news conference at 2 p.m. ' +
-    'EDT (1800 GMT) on Monday (Sept. 26).</p>',
-    link: 'http://www.space.com/34131-jupiter-moon-europa-hubble-telescope-announcement.html',
-    publishDate: "22.09.2016",
-    author: "cybersettler@babylonone.com",
-    featureImageUri: "europa-moon-caltech.jpg",
-    featureImageAltText: "jupiters moon Europa"
-  },{
     title: "Rosetta’s descent towards region of active pits",
     content: '<p>The final flyover will be complete on 24 September. ' +
     'Then a short series of manoeuvres needed to line Rosetta up with the ' +
@@ -21,7 +11,7 @@ var Announcements = [
     'Rosetta_s_descent_towards_region_of_active_pits',
     publishDate: "17.09.2016",
     author: "cybersettler@babylonone.com",
-    featureImageUri: "Rosetta_logo_rnb_small.jpg",
+    featureImageUri: "Rosetta_s_last_week_at_the_comet_node_full_image_2.jpg",
     featureImageAltText: "Rosetta logo"
   }
 ];
