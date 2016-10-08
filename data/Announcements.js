@@ -1,7 +1,7 @@
 var Announcements = [
   {
     title: "The space bridge challenge",
-    content: '<p>We have a started a new series of posts ' +
+    content: '<p>We have started a new series of posts ' +
     'about the problem of building permanent habitats in space ' +
     'where humans can feel comfortable.' +
     '</p>',
