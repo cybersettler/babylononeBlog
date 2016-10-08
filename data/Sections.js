@@ -15,8 +15,8 @@ var sections = {
     path:"/section/blog.html",
     headerImageUri:"default_header_image.png",
     type: "postList"
-  },
-  vr:{
+  }
+/*  vr:{
     title:"VR",
     path:"/section/vr.html",
     headerImageUri:"default_header_image.png"
@@ -25,7 +25,7 @@ var sections = {
     title:"Reviews",
     path:"/section/reviews.html",
     headerImageUri:"default_header_image.png"
-  }
+  } */
 }
 
 function getSectionsById(sId){
