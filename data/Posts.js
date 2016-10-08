@@ -53,6 +53,17 @@ var posts = {
     featureImageAltText:"Artist rendering of Alpha Centauri",
     headerImageUri:"colosimo-130704-011.jpg",
     section:"blog"
+  },
+  "double_harp_space_station":{
+    id: "double_harp_space_station",
+    title:"Double Harp Space Station", // the title tag should be 60 characters or less
+    description:"How bridge building techniques could contribute to space colonisation.", // meta description must be limited to 160 characters or less
+    author:"cybersettler@babylonone.com",
+    publishDate:"08.10.2016",
+    featureImageUri:"Bridge-harp-cable-stayed_160.png",
+    featureImageAltText:"Harp cable stayed bridge",
+    headerImageUri:"colosimo-130704-011.jpg",
+    section:"blog"
   }
 }
 

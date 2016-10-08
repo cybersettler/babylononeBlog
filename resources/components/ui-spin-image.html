@@ -1,0 +1,109 @@
+<!-- Defines element markup -->
+<template>
+  <canvas></canvas>
+</template>
+
+<script>
+(function(window, document, Object, Number, undefined) {
+  // Refers to the "importer", which is index.html
+  var thatDoc = document;
+
+  // Refers to the "importee", which is src/hello-world.html
+  var thisDoc =  (thatDoc._currentScript || thatDoc.currentScript).ownerDocument;
+
+  // Gets content from <template>
+  var template = thisDoc.querySelector('template').content;
+
+  // Creates an object based in the HTML Element prototype
+  var UIelement = Object.create(HTMLElement.prototype);
+
+  // Fires when an instance of the element is created
+  UIelement.createdCallback = function() {
+    // Creates the shadow root
+    var shadowRoot = this.createShadowRoot();
+
+    // Adds a template clone into shadow root
+    var clone = thatDoc.importNode(template, true);
+    shadowRoot.appendChild(clone);
+
+    // Caches <strong> DOM query
+    var canvas = shadowRoot.querySelector('canvas');
+    var context = canvas.getContext('2d');
+    var width = this.getAttribute("width") || 300;
+    var height = this.getAttribute("height") || 285;
+    var imgWidth = Number(this.dataset.width);
+    var imgHeight = Number(this.dataset.height);
+
+    canvas.setAttribute("width", width);
+    canvas.setAttribute("height", height);
+
+    var rotationVelocity = Number(this.dataset.rpm); // 360° / 60 segxmin = 6°/segxmin
+    var imageSrc = this.dataset.src;
+
+    loadImage(imageSrc, imgWidth, imgHeight).then(function(img) {
+      window.setInterval(render, 42);
+      var rotation = 0;
+      var delta = rotationVelocity * 0.25; // rotationVelocity x 1 frame/24seg
+                                           // rotationVelocity x 6°xmin/seg  x 1/24seg/frame
+                                           // rotationVelocity x 0.25°xmin/frame
+      function render() {
+        rotation += delta;
+        drawRotated(rotation, img);
+      }
+    }, function(err){
+      console.log("something went wrong: " + e.message());
+    });
+
+    function drawRotated(degrees,image){
+      context.clearRect(0,0,canvas.width,canvas.height);
+
+      // save the unrotated context of the canvas so we can restore it later
+      // the alternative is to untranslate & unrotate after drawing
+      context.save();
+
+      // move to the center of the canvas
+      context.translate(canvas.width/2,canvas.height/2);
+
+      // rotate the canvas to the specified degrees
+      context.rotate(degrees*Math.PI/180);
+
+      // draw the image
+      // since the context is rotated, the image will be rotated also
+      context.drawImage(image,-image.width/2,-image.height/2);
+
+      // we’re done with the rotating so restore the unrotated context
+      context.restore();
+    }
+  };
+
+  // Fires when an attribute was added, removed, or updated
+  UIelement.attributeChangedCallback = function(attr, oldVal, newVal) {
+    if (attr === 'who') {
+      this.setWho(newVal);
+    }
+  };
+
+  // Sets new value to "who" attribute
+  UIelement.setWho = function(val) {
+    this.who = val;
+
+    // Sets "who" value into <strong>
+    this.strong.textContent = this.who;
+  };
+
+  // Registers <hello-world> in the main document
+  window.UISpinImage = thatDoc.registerElement('ui-spin-image', {
+    prototype: UIelement
+  });
+
+  function loadImage(src, width, height) {
+    return new Promise(function(fulfill, reject) {
+      var img = new Image(width, height);
+      img.addEventListener("load", function() {
+        fulfill(img);
+      }, false);
+      img.src = src;
+    });
+  }
+})(window, document, Object, Number);
+</script>
