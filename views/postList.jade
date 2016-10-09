@@ -8,9 +8,9 @@ block content
     .post-header-image(style="background-image:url('" + baseUrl + "resources/images/" + section.headerImageUri + "')")
     .row
       .col-xs-12.col-sm-8
-        ul.media-list
+        ul.media-list(style='margin-top:50px')
           each post in section.content
-            li.media
+            li.media(style='margin-top:50px')
               a.media-left(href='/post/' + post.id + '.html')
                 img(src='/resources/images/' + post.featureImageUri, alt=post.featureImageAltText )
               .media-body
