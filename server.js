@@ -24,8 +24,8 @@ var BlogApp = function() {
      */
     self.setupVariables = function() {
         //  Set the environment variables we need.
-        self.ipaddress = process.env.OPENSHIFT_NODEJS_IP;
-        self.port      = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+        self.ipaddress = '0.0.0.0';
+        self.port = 8080;
         self.baseUrl = "http://babylonone-cybersettler.rhcloud.com/";
         self.environment = 'PROD';
 
